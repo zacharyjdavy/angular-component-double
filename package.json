@@ -1,0 +1,50 @@
+{
+  "name": "angular-component-double",
+  "version": "1.0.0",
+  "description": "component test doubles for Angular 2+",
+  "main": "angular-component-double.umd.js",
+  "jsnext:main": "angular-component-double.esm.js",
+  "module": "angular-component-double.esm.js",
+  "types": "angular-component-double.d.ts",
+  "scripts": {
+    "test": "karma start --single-run",
+    "clean:pre": "rimraf dist",
+    "clean:post": "rimraf \"src/**/*.ngfactory.ts\"",
+    "copy": "cpy LICENSE package.json README.md dist",
+    "build:js": "ngc -p tsconfig.dist.json",
+    "build:umd": "rollup -c rollup.config.js",
+    "build:uglify": "uglifyjs -c --screw-ie8 --comments -o ./dist/bundles/angular-component-double.min.umd.js ./dist/bundles/angular-component-double.umd.js",
+    "prebuild": "npm run test && npm run clean:pre",
+    "postbuild": "npm run clean:post && npm run copy",
+    "build": "npm run build:js && npm run build:umd && npm run build:uglify"
+  },
+  "author": "Zack Davy",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/common": "^2.0.0 || ^4.0.0",
+    "@angular/core": "^2.0.0 || ^4.0.0",
+    "core-js": "^2.5.1",
+    "rxjs": "^5.4.3",
+    "zone.js": "^0.8.17"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.3.2",
+    "@angular/compiler": "^2.0.0 || ^4.0.0",
+    "@angular/compiler-cli": "^2.0.0 || ^4.0.0",
+    "@angular/platform-browser": "^2.0.0 || ^4.0.0",
+    "@angular/platform-browser-dynamic": "^2.0.0 || ^4.0.0",
+    "@types/jasmine": "^2.5.54",
+    "@types/node": "^8.0.26",
+    "cpy": "^5.1.0",
+    "cpy-cli": "^1.0.1",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-spec-reporter": "0.0.31",
+    "karma-typescript": "^3.0.5",
+    "karma-typescript-angular2-transform": "^1.0.1",
+    "rollup": "^0.49.2",
+    "typescript": "^2.5.2"
+  }
+}
